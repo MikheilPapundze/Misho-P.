@@ -12,8 +12,16 @@ class Rational{
 	private:
 		ratPair RP;
 		bool myErr;
-		void Norm(){
-			ratPair TMP=RP;
+		
+	        int Usg (int a, int b){
+ 	        if (a==0) return b;
+ 	        return Usg(b%a, a);
+                }
+		
+	        void Norm(){
+			int MyGcd=Usg(abs(RP.M), RP.N);
+			RP.M=RP.M/MyGcd;
+			RP.N=RP.N/MyGcd;
 		}
 	public:
 		Rational(){
